@@ -68,7 +68,7 @@ function App() {
             <iframe
               src={currentUrl}
               title="External Dashboard"
-              frameBorder="0"
+              style={{ width: "100%", height: "100%", border: "none" }}
               allowFullScreen
             />
           </div>
