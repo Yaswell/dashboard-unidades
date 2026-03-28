@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/NavBar";
 import Filter from "./components/Filter";
 import UnitCard from "./components/UnitCard";
+import { fetchUnits } from "./services/sheetService"; // 👈 Importación estática directa
 import "./App.css";
 
 export type Unit = {
@@ -22,11 +23,10 @@ function App() {
   const [currentUrl, setCurrentUrl] = useState("inicio");
 
   useEffect(() => {
-    import("./services/sheetService").then((m) => {
-      m.fetchUnits()
-        .then((data) => setUnits(data))
-        .catch((err) => console.error("Error cargando datos:", err));
-    });
+    // 💡 Llamada directa a la función sin el import() dinámico
+    fetchUnits()
+      .then((data) => setUnits(data))
+      .catch((err) => console.error("Error cargando datos:", err));
   }, []);
 
   const filtered = units.filter((u) =>
@@ -35,7 +35,6 @@ function App() {
 
   return (
     <>
-      {/* Solo pasamos currentUrl y la función de navegación */}
       <Navbar onNavigate={setCurrentUrl} currentUrl={currentUrl} />
 
       <main className="main-content">
@@ -73,7 +72,7 @@ function App() {
             <iframe
               src={currentUrl}
               title="External Dashboard"
-              frameBorder="0"
+              style={{ width: "100%", height: "100%", border: "none" }}
               allowFullScreen
             />
           </div>
