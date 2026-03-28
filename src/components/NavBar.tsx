@@ -1,6 +1,6 @@
 import { LayoutDashboard, Globe, Menu, X, BarChart3 } from "lucide-react";
 import { useState } from "react";
-
+import "./NavBar.css";
 type Props = {
   onNavigate: (url: string) => void;
   currentUrl: string;

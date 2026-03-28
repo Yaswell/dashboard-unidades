@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/NavBar";
 import Filter from "./components/Filter";
 import UnitCard from "./components/UnitCard";
+import { fetchUnits } from "./services/sheetService"; // 👈 Importación directa
 import "./App.css";
 
 export type Unit = {
@@ -22,11 +23,9 @@ function App() {
   const [currentUrl, setCurrentUrl] = useState("inicio");
 
   useEffect(() => {
-    import("./services/sheetService").then((m) => {
-      m.fetchUnits()
-        .then((data) => setUnits(data))
-        .catch((err) => console.error("Error cargando datos:", err));
-    });
+    fetchUnits()
+      .then((data) => setUnits(data))
+      .catch((err) => console.error("Error cargando datos:", err));
   }, []);
 
   const filtered = units.filter((u) =>
@@ -35,9 +34,7 @@ function App() {
 
   return (
     <>
-      {/* Solo pasamos currentUrl y la función de navegación */}
       <Navbar onNavigate={setCurrentUrl} currentUrl={currentUrl} />
-
       <main className="main-content">
         {currentUrl === "inicio" ? (
           <div className="container">
@@ -45,9 +42,7 @@ function App() {
               <h1>Dashboard de Unidades</h1>
               <p>Seguimiento de requisitos y membresía en tiempo real</p>
             </header>
-
             <Filter value={search} onChange={setSearch} />
-
             <div className="grid-container">
               {filtered.length > 0 ? (
                 filtered.map((unit) => (
@@ -63,7 +58,7 @@ function App() {
                     color: "#64748b",
                   }}
                 >
-                  <p>No se encontraron unidades con ese nombre.</p>
+                  <p>No se encontraron unidades.</p>
                 </div>
               )}
             </div>
