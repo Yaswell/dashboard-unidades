@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+
+:root {
+  --primary: #6366f1;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+body {
+  background: var(--bg-gradient);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-header p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* BUSCADOR */
+.filter-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.filter-input {
+  width: 100%;
+  padding: 18px 20px 18px 55px;
+  border-radius: 20px;
+  border: 2px solid white;
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.filter-input:focus {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* GRID */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.unit-card {
+  background: white;
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.02),
+    0 2px 4px -1px rgba(0, 0, 0, 0.01);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.unit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.icon-success {
+  color: var(--success);
+}
+.icon-pending {
+  color: var(--warning);
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+}
+
+.stat-item b {
+  margin-left: auto;
+  color: #000;
+}
+
+/* PROGRESS */
+.progress-section {
+  margin-bottom: 25px;
+}
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+.percentage {
+  color: var(--primary);
+}
+
+.progress-track {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+.progress-glow {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.bg-success {
+  background: var(--success);
+}
+.bg-warning {
+  background: var(--warning);
+}
+.bg-danger {
+  background: var(--danger);
+}
+
+/* FALTAN (BADGES - SIN VIÑETAS) */
+.faltan-wrapper {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 15px;
+}
+
+.faltan-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  background: #fff1f2;
+  color: var(--danger);
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+}
