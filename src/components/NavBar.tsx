@@ -21,7 +21,7 @@ function Navbar({ onNavigate, currentUrl }: Props) {
       icon: <BarChart3 size={18} />,
     },
     {
-      name: "Proyecto Estaca",
+      name: "Conversos Recientes",
       url: "https://yaswell.github.io/proyecto-estaca-villa-mella/",
       icon: <Globe size={18} />,
     },
@@ -44,7 +44,6 @@ function Navbar({ onNavigate, currentUrl }: Props) {
           onClick={() => handleNav("inicio")}
           style={{ cursor: "pointer" }}
         >
-          <div className="logo-icon">VM</div>
           <span>
             Estaca Villa Mella <strong>|</strong> <b>{pageTitle}</b>
           </span>
